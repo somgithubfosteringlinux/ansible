@@ -1,0 +1,8 @@
+---
+- name: check hosts
+  #  hosts: '{{ hosts }}'
+  hosts: all
+  remote_user: root
+  roles:
+     - remediation
+

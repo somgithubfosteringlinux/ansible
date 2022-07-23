@@ -1,0 +1,47 @@
+- name: "Ensure cron is restricted to authorized users"
+  block:
+      - name: "Ensure cron is restricted to authorized users | Remove cron.deny"
+        file:
+            path: /etc/cron.deny
+            state: absent
+
+      - name: "Ensure cron is restricted to authorized users | Check if cron.allow exists"
+        stat:
+            path: "/etc/cron.allow"
+        register: cron_allow_state
+
+      - name: "Ensure cron is restricted to authorized users | Ensure cron.allow is restricted to authorized users"
+        file:
+            path: /etc/cron.allow
+            state: '{{ "file" if  cron_allow_state.stat.exists else "touch" }}'
+            owner: root
+            group: root
+            mode: 0600
+  when:
+      - rhel8_rule_9
+  tags:
+      - cron
+
+- name: "Ensure at is restricted to authorized users"
+  block:
+      - name: "Ensure at is restricted to authorized users | Remove at.deny"
+        file:
+            path: /etc/at.deny
+            state: absent
+
+      - name: "Ensure at is restricted to authorized users  | Check if at.allow exists"
+        stat:
+            path: "/etc/at.allow"
+        register: at_allow_state
+
+      - name: "Ensure at is restricted to authorized users | Ensure at.allow is restricted to authorized users"
+        file:
+            path: /etc/at.allow
+            state: '{{ "file" if  at_allow_state.stat.exists else "touch" }}'
+            owner: root
+            group: root
+            mode: 0600
+  when:
+      - rhel8_rule_10
+  tags:
+      - cron

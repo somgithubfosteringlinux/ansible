@@ -1,0 +1,9 @@
+---
+- name: "Ensure permissions on all logfiles are configured"
+  command: find /var/log -type f -exec chmod g-wx,o-rwx "{}" +
+  changed_when: false
+  failed_when: false
+  when:
+      - rhel8_rule_12
+  tags:
+      - logfiles

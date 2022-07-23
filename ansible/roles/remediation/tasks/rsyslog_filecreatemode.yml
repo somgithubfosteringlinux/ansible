@@ -1,0 +1,11 @@
+- name: "Ensure rsyslog default file permissions configured"
+  lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: '^\$FileCreateMode'
+      line: '$FileCreateMode 0640'
+  check_mode: no
+  notify: restart rsyslog
+  when:
+      - rhel8_rule_11
+  tags:
+      - rsyslog

@@ -1,0 +1,23 @@
+---
+
+#rule_007: true
+#rule_008: true
+rhel8_rule_1: true
+rhel8_rule_2: true
+rhel8_rule_3: true
+rhel8_rule_4: true
+rhel8_rule_5: true
+rhel8_rule_6: true
+rhel8_rule_7: true
+rhel8_rule_8: true
+rhel8_rule_9: true
+rhel8_rule_10: true
+rhel8_rule_11: true
+rhel8_rule_12: true
+rhel8_rule_13: true
+rhel8_rule_14: true
+rhel8_rule_15: true
+
+
+
+rhel8_ipv6_required: true

@@ -1,0 +1,4 @@
+dict: 
+ 'rhel8_rule_1': {rule: 'rhel8_rule_1', name: 'rule1' , s_lv: 'Level 1'}
+ 'rhel8_rule_2': {rule: 'rhel8_rule_2', name: 'rule2' , s_lv: 'Level 1'}
+

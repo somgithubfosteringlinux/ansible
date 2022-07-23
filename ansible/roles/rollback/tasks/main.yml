@@ -1,0 +1,24 @@
+---
+
+- name: "rollback for file permissions"
+  import_tasks: rollback1.yml
+
+- name: "rollback TCP SYN Cookies sysctl1"
+  import_tasks: sysctl1.yml
+
+- name: "rollback TCP SYN Cookies sysctl2"
+  import_tasks: sysctl2.yml
+  #- name: "Cron permission roles"
+  #  import_tasks: cron_permissions.yml
+
+- name: "rollback Cron authorization roles"
+  import_tasks: cron_authorized.yml
+
+- name: "Ensure filecreate mode 640 in rsyslog conf"
+  import_tasks: rsyslog_filecreatemode.yml
+
+  #- name: "Ensure logfile_permission roles"
+  #  import_tasks: logfile_permission.yml
+
+  #- name: "Ensure hosts_permission roles"
+  #  import_tasks: hosts_permission.yml

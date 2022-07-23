@@ -1,0 +1,30 @@
+---
+#- name: check hosts
+  #  hosts: '{{ hosts }}'
+  #  remote_user: root
+  #  tasks:
+
+   - name: reading the csv file
+     read_csv:
+      path: /tmp/output.csv
+      fieldnames: path,owner,permission
+      delimiter: ','
+     register: oldps
+
+   - debug:
+      msg: "{{ file.path }}"
+     loop: "{{ oldps.list }}"
+     loop_control:
+      loop_var: file
+     
+   - name: rollback file ownership and permissions as per csv backup
+     ansible.builtin.file:
+                       path: "{{ file.path }}"
+                       owner: "{{ file.owner }}"
+                       group: "{{ file.owner }}"
+                       mode: "{{ file.permission }}"
+     loop: "{{ oldps.list }}"
+     loop_control:
+      loop_var: file
+
+

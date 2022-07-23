@@ -1,0 +1,20 @@
+- name: "Ensure IPv6 router advertisements are not accepted"
+  sysctl:
+      name: '{{ item.name }}'
+      value: '{{ item.value }}'
+      sysctl_set: yes
+      state: present
+      reload: yes
+      ignoreerrors: yes
+  notify: sysctl flush ipv6 route table
+  with_items:
+      - { name: net.ipv6.conf.all.accept_ra, value: 0 }
+      - { name: net.ipv6.conf.default.accept_ra, value: 0 }
+  when:
+      - rhel8_ipv6_required
+      - rhel8_rule_2
+
+- name: "all result combined1"
+  set_fact:
+     all_results: "{{ all_results|default({})|combine({'rhel8_rule_2':{'result':rhel8_rule_2|default(False), 'audits': rhel8_rule_2|default([])}}) }}"
+

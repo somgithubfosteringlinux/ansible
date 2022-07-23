@@ -1,0 +1,19 @@
+---
+- name: "Ensure TCP SYN Cookies is enabled"
+  sysctl:
+   name: net.ipv4.tcp_syncookies
+   value: '1'
+   state: absent
+   reload: yes
+   ignoreerrors: yes
+   #  notify: sysctl flush ipv4 route table
+  #   set_fact:
+  #      rhel8_rule_1: "{{ rhel8_rule_1|default([]) + [item] }}"
+  #  when:
+  #    - rhel8_rule_1
+
+  #- name: "all result combined1"
+  # set_fact:
+  #    all_results: "{{ all_results|default({})|combine({'rhel8_rule_1':{'result':rhel8_rule_1|default(False), 'audits': rhel8_rule_1|default([])}}) }}"
+
+

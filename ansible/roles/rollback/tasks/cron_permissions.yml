@@ -1,0 +1,81 @@
+---
+
+- name: "Ensure cron daemon is enabled"
+  service:
+      name: crond
+      enabled: yes
+  when:
+      - rhel8_rule_3
+  tags:
+      - cron
+
+- name: "Ensure permissions on /etc/crontab are configured"
+  file:
+      path: /etc/crontab
+      owner: root
+      group: root
+      mode: 0600
+  when:
+      - rhel8_rule_4
+  tags:
+      - cron
+
+- name: "Ensure permissions on /etc/cron.hourly are configured"
+  file:
+      path: /etc/cron.hourly
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - rhel8_rule_5
+  tags:
+      - cron
+
+- name: "Ensure permissions on /etc/cron.daily are configured"
+  file:
+      path: /etc/cron.daily
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - rhel8_rule_6
+  tags:
+      - cron
+
+- name: "Ensure permissions on /etc/cron.weekly are configured"
+  file:
+      path: /etc/cron.weekly
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - rhel8_rule_7
+  tags:
+      - cron
+
+- name: "Ensure permissions on /etc/cron.monthly are configured"
+  file:
+      path: /etc/cron.monthly
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - rhel8_rule_8
+  tags:
+      - cron
+
+- name: "Ensure permissions on /etc/cron.d are configured"
+  file:
+      path: /etc/cron.d
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - rhel8_rule_9
+  tags:
+      - cron

@@ -1,0 +1,19 @@
+dict: 
+ 'rule_1_Ensure': {rule: 'rule_1_Ensure', name: 'tcp_syncookies_enable(1)' , s_lv: 'Level 1'}
+ 'rule_2_Ensure': {rule: 'rule_2_Ensure', name: 'ipv6_accept_router_adv(0)' , s_lv: 'Level 1'}
+ 'rule_3_Ensure': {rule: 'rule_3_Ensure', name: 'crond.service is running' , s_lv: 'Level 1'}
+ 'rule_4_verify': {rule: 'rule_4_verify', name: 'crontab_permissions' , s_lv: 'Level 1'}
+ 'rule_5_verify': {rule: 'rule_5_verify', name: 'cron_hourly_permissions' , s_lv: 'Level 1'}
+ 'rule_6_verify': {rule: 'rule_6_verify', name: 'cron_daily_permissions' , s_lv: 'Level 1'}
+ 'rule_7_verify': {rule: 'rule_7_verify', name: 'cron_weekly_permissions' , s_lv: 'Level 1'}
+ 'rule_8_verify': {rule: 'rule_8_verify', name: 'cron_monthly_permissions' , s_lv: 'Level 1'}
+ 'rule_9_verify': {rule: 'rule_9_verify', name: 'cron_yearly_permissions' , s_lv: 'Level 1'}
+ 'rule_10_a_Existence': {rule: 'rule_10_a_Existence', name: 'cron_deny_absence' , s_lv: 'Level 1'}
+ 'rule_10_b_Existence': {rule: 'rule_10_b_Existence', name: 'cron_allow_presence' , s_lv: 'Level 1'}
+ 'rule_11_a_Existence': {rule: 'rule_11_a_Existence', name: 'at_deny_absence' , s_lv: 'Level 1'}
+ 'rule_11_b_Existence': {rule: 'rule_11_b_Existence', name: 'at_allow_presence' , s_lv: 'Level 1'}
+ 'rule_12_log': {rule: 'rule_12_log', name: 'all_files_owner_and_mode' , s_lv: 'Level 1'}
+ 'rule_13_verify': {rule: 'rule_13_verify', name: 'hosts_allow_permissions' , s_lv: 'Level 1'}
+ 'rule_14_verify': {rule: 'rule_14_verify', name: 'hosts_deny_permissions' , s_lv: 'Level 1'}
+ 'rule_15_Ensure': {rule: 'rule_15_Ensure', name: 'rsyslog_$Filecreatemode640' , s_lv: 'Level 1'}
+

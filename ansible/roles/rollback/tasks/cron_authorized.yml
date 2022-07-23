@@ -1,0 +1,64 @@
+- name: "rollback for cron.deny"
+  block:
+      - name: "Ensure cron.deny backup is available in tmp"
+        stat:
+           path: /tmp/cron.deny
+        register: cron_deny_state
+
+      - name: "rollback to restore cron.deny from tmp backup"
+        copy:
+          src: /tmp/cron.deny
+          dest: /etc
+          remote_src: yes
+          mode: 0644
+        when: cron_deny_state.stat.exists
+
+        #      - name: "Ensure cron is restricted to authorized users | Check if cron.allow exists"
+        #        stat:
+        #            path: "/etc/cron.allow"
+        #       register: cron_allow_state
+
+        #      - name: "Ensure cron is restricted to authorized users | Ensure cron.allow is restricted to authorized users"
+        #     file:
+        #         path: /etc/cron.allow
+        #            state: '{{ "file" if  cron_allow_state.stat.exists else "touch" }}'
+        #          owner: root
+        #            group: root
+        #            mode: 0600
+  when:
+     - rhel8_rule_9
+  tags:
+     - cron
+
+- name: "rollback for at_deny"
+  block:
+      - name: "Ensure at.deny backup is available in tmp"
+        stat:
+           path: /tmp/at.deny
+        register: at_deny_state
+
+      - name: "rollback to restore at.deny from tmp backup"
+        copy:
+          src: /tmp/at.deny
+          dest: /etc
+          remote_src: yes
+          mode: 0644
+        when: at_deny_state.stat.exists
+
+
+            #    - name: "Ensure at is restricted to authorized users  | Check if at.allow exists"
+            #    stat:
+            #      path: "/etc/at.allow"
+            #     register: at_allow_state
+
+            #  - name: "Ensure at is restricted to authorized users | Ensure at.allow is restricted to authorized users"
+            # file:
+            #  path: /etc/at.allow
+            #  state: '{{ "file" if  at_allow_state.stat.exists else "touch" }}'
+            # owner: root
+            #  group: root
+            # mode: 0600
+  when:
+      - rhel8_rule_10
+  tags:
+      - cron
